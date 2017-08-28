@@ -38,10 +38,6 @@ Vagrant.configure("2") do |config|
 		tomcat8.vm.hostname="tomcat8-01"
 		tomcat8.vm.network "public_network", ip: "192.168.0.80"
         tomcat8.vm.provision "shell", path: "provision/node-tomcat8.sh", privileged: true
-	    #cp 'provision/files/tomcat8/tomcat.service '/etc/systemd/system/tomcat.service
-		#tomcat8.vm.provision "file", source: "provision/files/tomcat8/tomcat.service", destination: "/etc/systemd/system/tomcat.service" 
-		tomcat8.vm.provision "shell", path: "provision/node-tomcat8-2.sh", privileged: true
-		#web.vm.provision :"shell", inline: 'echo $path > /home/vagrant/.ssh/authorized_keys'
    end
-    config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
+
 end
