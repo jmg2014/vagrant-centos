@@ -53,4 +53,29 @@ Vagrant.configure("2") do |config|
        end
      end
 
+     # loadbalancer - consul
+     config.vm.define "loadbalancer" do |loadbalancer_config|
+      #loadbalancer_config.vm.network :forwarded_port, guest: 8080, host: 8080
+      #loadbalancer_config.vm.network :forwarded_port, guest: 80, host: 8081
+  		loadbalancer_config.vm.hostname="loadbalancer-01"
+  		loadbalancer_config.vm.network "public_network", ip: "192.168.0.14"
+      loadbalancer_config.vm.provision "shell", path: "provision/node-loadbalancer.sh", privileged: true
+     end
+
+     #web 1
+     config.vm.define :web1 do |web1|
+       web1.vm.hostname="web-01"
+       web1.vm.network "public_network", ip: "192.168.0.15"
+       web1.vm.provision "shell", path: "provision/web.sh", privileged: true
+      end
+
+      #web 2
+      config.vm.define :web2 do |web2|
+        web2.vm.hostname="web-02"
+        web2.vm.network "public_network", ip: "192.168.0.16"
+        web2.vm.provision "shell", path: "provision/web.sh", privileged: true
+      end
+
+
+
 end
