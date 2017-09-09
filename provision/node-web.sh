@@ -13,4 +13,4 @@ sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
 sudo firewall-cmd --zone=public --permanent --add-port=80/tcp
 sudo service firewalld restart
 
-sudo service hhtpd start
+sudo service httpd start
