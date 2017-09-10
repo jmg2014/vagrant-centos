@@ -76,6 +76,14 @@ Vagrant.configure("2") do |config|
         web2.vm.provision "shell", path: "provision/web.sh", privileged: true
       end
 
+      #consul server
+      config.vm.define :consulserver do |consulserver|
+        consulserver.vm.hostname="consul-01"
+        consulserver.vm.network "public_network", ip: "192.168.0.17"
+        consulserver.vm.provision "shell", path: "provision/consul.sh", privileged: true
+      end
+
+    
 
 
 end
