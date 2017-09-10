@@ -17,6 +17,13 @@ vagrant plugin install vagrant-vbguest
 |Consul|192.168.0.17|vagrant up consulserver|
 
 
+
+### HAProxy
+to see stats in this server
+```
+http://192.168.0.14:8080/haproxy?stats
+```
+
 ### Consul
 to run the server node (leader)
 ```
