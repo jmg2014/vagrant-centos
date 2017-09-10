@@ -66,14 +66,14 @@ Vagrant.configure("2") do |config|
      config.vm.define :web1 do |web1|
        web1.vm.hostname="web-01"
        web1.vm.network "public_network", ip: "192.168.0.15"
-       web1.vm.provision "shell", path: "provision/web.sh", privileged: true
+       web1.vm.provision "shell", path: "provision/node-web.sh", privileged: true
       end
 
       #web 2
       config.vm.define :web2 do |web2|
         web2.vm.hostname="web-02"
         web2.vm.network "public_network", ip: "192.168.0.16"
-        web2.vm.provision "shell", path: "provision/web.sh", privileged: true
+        web2.vm.provision "shell", path: "provision/node-web.sh", privileged: true
       end
 
       #consul server
@@ -83,7 +83,7 @@ Vagrant.configure("2") do |config|
         consulserver.vm.provision "shell", path: "provision/consul.sh", privileged: true
       end
 
-    
+
 
 
 end

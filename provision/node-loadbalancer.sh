@@ -21,20 +21,30 @@ defaults
     timeout connect 5000ms
     timeout client 50000ms
     timeout server 50000ms
+
 frontend http-in
-    bind *:80
-    default_backend webservers
+        bind *:80
+        acl  has_special_uri path_beg /first-blog
+        use_backend special_server if has_special_uri
+        default_backend webservers
+
 backend webservers
-    balance roundrobin
-    # Poor-man's sticky
-    # balance source
-    # JSP SessionID Sticky
-    # appsession JSESSIONID len 52 timeout 3h
-    option httpchk
-    option forwardfor
-    option http-server-close
-    server web1 192.168.0.15:80 maxconn 32 check
-    server web2 192.168.0.16:80 maxconn 32 check
+        balance roundrobin
+        # Poor-man's sticky
+        # balance source
+        # JSP SessionID Sticky
+        # appsession JSESSIONID len 52 timeout 3h
+        option httpchk
+        option forwardfor
+        option http-server-close
+        server my-server-01 192.168.0.15:80 maxconn 32 check
+
+
+backend special_server
+       balance roundrobin
+       option forwardfor
+       server my-server-02 192.168.0.16:80 maxconn 32 check
+
 listen admin
     bind *:8080
     stats enable
