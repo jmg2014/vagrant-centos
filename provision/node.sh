@@ -2,7 +2,8 @@
 
 # Install
 sudo yum install epel-release -y
-sudo yum install wget net-tools locate -y
+sudo yum install wget net-tools mlocate -y
+sudo yum -y install yum-utils
 sudo yum update -y
 
 # Start Firewalld
