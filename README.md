@@ -1,3 +1,5 @@
+<a href="https://github.com/jmg2014/vagrant-centos/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"></a>
+
 ### Install the vagrant plugin
 ```
 vagrant plugin install vagrant-vbguest
